@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState, ReactNode, useContext } from "react";
 import { api } from "../services/api";
 
-export const TransactionsContext = createContext<TransactionsContextData>({} as TransactionsContextData);
 
 interface Transactions {
   id: number
@@ -24,6 +23,8 @@ interface TransactionsContextData {
   transactions: Transactions[]
   createTransaction:(transaction: TransactionInput) => Promise<void>
 }
+
+export const TransactionsContext = createContext<TransactionsContextData>({} as TransactionsContextData);
 
 export function TransactionsProvider({children}: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transactions[]>([]);
